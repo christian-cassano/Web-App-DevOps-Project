@@ -60,3 +60,109 @@ To run the application, you simply need to run the `app.py` script in this repos
 ## License
 
 This project is licensed under the MIT License. For more details, refer to the [LICENSE](LICENSE) file.
+
+# Infrastructure as Code (IaC) with Terraform for Azure Networking Services
+
+This project demonstrates the provisioning of Azure networking services for an AKS (Azure Kubernetes Service) cluster using Infrastructure as Code (IaC) with Terraform. The networking services include creating an Azure Resource Group, a Virtual Network (VNet), subnets for the control plane and worker nodes, and a Network Security Group (NSG).
+
+## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Project Structure](#project-structure)
+- [Usage](#usage)
+- [Input Variables](#input-variables)
+- [Output Variables](#output-variables)
+
+## Prerequisites
+Before running Terraform commands, ensure you have the following prerequisites installed and configured:
+- [Terraform](https://www.terraform.io/downloads.html)
+- Azure CLI with authentication configured
+
+## Project Structure
+The project is structured into modules for better organization and modularity:
+- `networking-module`: Contains Terraform configuration for provisioning Azure networking services.
+- `aks-cluster-module`: Will contain Terraform configuration for provisioning the AKS cluster (not covered in this part of the README, See below ).
+
+## Usage
+1. Clone this repository to your local machine.
+2. Navigate to the `networking-module` directory.
+3. Initialize the networking module by running `terraform init`.
+4. Update the input variables in `variables.tf` if necessary.
+5. Review the Terraform configuration in `main.tf` to understand the resources being provisioned.
+6. Apply the Terraform configuration to provision the networking resources by running `terraform apply`.
+
+## Input Variables
+The networking module accepts the following input variables, which can be customized based on your requirements:
+- `resource_group_name`: Name of the Azure Resource Group where networking resources will be deployed.
+- `location`: Azure region where networking resources will be deployed.
+- `vnet_address_space`: Address space for the Virtual Network (VNet).
+
+## Output Variables
+After provisioning the networking resources, the following output variables are available:
+- `vnet_id`: ID of the Virtual Network (VNet).
+- `control_plane_subnet_id`: ID of the control plane subnet within the VNet.
+- `worker_node_subnet_id`: ID of the worker node subnet within the VNet.
+- `networking_resource_group_name`: Name of the Azure Resource Group where networking resources were provisioned.
+- `aks_nsg_id`: ID of the Network Security Group (NSG).
+
+# Provisioning an AKS Cluster with Terraform
+
+This project demonstrates the provisioning of an Azure Kubernetes Service (AKS) cluster using Infrastructure as Code (IaC) with Terraform. It automates the creation of the AKS cluster, including defining networking resources and configuring cluster settings.
+
+## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Project Structure](#project-structure)
+- [Usage](#usage)
+- [Input Variables](#input-variables)
+- [Output Variables](#output-variables)
+
+## Prerequisites
+Before running Terraform commands, ensure you have the following prerequisites installed and configured:
+- [Terraform](https://www.terraform.io/downloads.html)
+- Azure CLI with authentication configured
+
+## Project Structure
+The project is organized into modules for better organization and modularity:
+- `networking-module`: Contains Terraform configuration for provisioning Azure networking services.
+- `aks-cluster-module`: Contains Terraform configuration for provisioning the AKS cluster.
+
+## Usage
+1. Clone this repository to your local machine.
+2. Navigate to the `networking-module` directory and initialize the module by running `terraform init`.
+3. Update the input variables in `variables.tf` if necessary.
+4. Navigate to the `aks-cluster-module` directory and initialize the module by running `terraform init`.
+5. Update the input variables in `variables.tf` if necessary.
+6. Review the Terraform configuration in `main.tf` to understand the resources being provisioned.
+7. Apply the Terraform configuration to provision the AKS cluster by running `terraform apply`.
+
+## Input Variables
+### Networking Module
+The networking module accepts the following input variables:
+- `resource_group_name`: Name of the Azure Resource Group where networking resources will be deployed.
+- `location`: Azure region where networking resources will be deployed.
+- `vnet_address_space`: Address space for the Virtual Network (VNet).
+
+### AKS Cluster Module
+The cluster module accepts the following input variables:
+- `aks_cluster_name`: Name of the AKS cluster to be created.
+- `cluster_location`: Azure region where the AKS cluster will be deployed.
+- `dns_prefix`: DNS prefix of the AKS cluster.
+- `kubernetes_version`: Kubernetes version the cluster will use.
+- `service_principal_client_id`: Client ID for the service principal associated with the cluster.
+- `service_principal_secret`: Client Secret for the service principal associated with the cluster.
+- `resource_group_name`: Name of the Azure Resource Group where networking resources are deployed.
+- `vnet_id`: ID of the Virtual Network (VNet) where the AKS cluster will be connected.
+- `control_plane_subnet_id`: ID of the control plane subnet within the VNet.
+- `worker_node_subnet_id`: ID of the worker node subnet within the VNet.
+
+## Output Variables
+### AKS Cluster Module
+After provisioning the AKS cluster, the following output variables are available:
+- `aks_cluster_name`: Name of the provisioned AKS cluster.
+- `aks_kubeconfig`: Kubernetes configuration file of the provisioned AKS cluster.
+
+
+## Contributing
+Contributions are welcome! Feel free to submit pull requests or raise issues if you encounter any problems.
+
+## License
+This project is licensed under the [MIT License](LICENSE).

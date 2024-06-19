@@ -1,0 +1,6 @@
+*.terraform/
+*.env
+*.terraform.tfstate
+*.yaml
+*.terraform.tfstate.backup
+
