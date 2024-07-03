@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  imageName: 'christiancassano/my-flask-app:v1.0'
+  imageName: 'christiancassano/my-flask-app'
 
 steps:
 - task: Docker@2
