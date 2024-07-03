@@ -30,6 +30,15 @@ steps:
     azureResourceGroup: 'christian-devops'
     kubernetesCluster: 'christianaks'
     manifests: 'application-manifest.yaml'
+- task: KubernetesManifest@1
+  inputs:
+    action: 'deploy'
+    connectionType: 'azureResourceManager'
+    azureSubscriptionConnection: 'ChristianDevOps1'
+    azureResourceGroup: 'christian-devops'
+    kubernetesCluster: 'christianaks'
+    manifests: 'application-manifest.yaml'
+
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
