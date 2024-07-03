@@ -1,4 +1,5 @@
 # Starter pipeline
+
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -21,6 +22,14 @@ steps:
     Dockerfile: 'Dockerfile'  # The path to your Dockerfile
     tags: |
       latest
+      
+- task: KubernetesManifest@1
+  inputs:
+    action: 'deploy'
+    connectionType: 'azureResourceManager'
+    azureResourceGroup: 'christian-devops'
+    kubernetesCluster: 'christianaks'
+    manifests: 'application-manifest.yaml'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
