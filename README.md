@@ -56,10 +56,10 @@ Before running the application or deploying infrastructure, ensure the following
    git clone https://github.com/maya-a-iuga/Web-App-DevOps-Project.git
    cd Web-App-DevOps-Project
 
-#Run Application: 
+# Run Application: 
 python app.py
 
-##Technology Stack
+## Technology Stack
 
 - Backend: Flask handles routing, data processing, and interactions with the Azure SQL Database.
 
@@ -67,43 +67,43 @@ python app.py
 
 - Database: Azure SQL Database stores and manages order-related data securely.
 
-###Infrastructure as Code (IaC) with Terraform for Azure Networking Services
+### Infrastructure as Code (IaC) with Terraform for Azure Networking Services
 
 This section details the provisioning of Azure networking services using Infrastructure as Code (IaC) with Terraform. The infrastructure setup includes creating an Azure Resource Group, a Virtual Network (VNet), subnets for the control plane and worker nodes, and a Network Security Group (NSG).
 
-#Prerequisites
+# Prerequisites
 
 Ensure you have the following tools installed and configured:
 
 - Terraform
 - Azure CLI
 
-##Project Structure
+## Project Structure
 
-#The project is organized into modules for modularity and clarity:
+# The project is organized into modules for modularity and clarity:
 
 - networking-module: Terraform configuration for Azure networking services.
 - aks-cluster-module: Terraform configuration for AKS cluster provisioning.
 
 
-#Usage
+# Usage
 
-##Clone Repository:
+## Clone Repository:
 
 git clone https://github.com/maya-a-iuga/Web-App-DevOps-Project.git
 cd Web-App-DevOps-Project/networking-module
 
-##Initialize Terraform:
+## Initialize Terraform:
 
 terraform init
 
-##Review and Apply Terraform Configuration:
+## Review and Apply Terraform Configuration:
 
 terraform apply
 
 Follow the prompts to provision networking resources in Azure.
 
-#Input Variables
+# Input Variables
 
 The networking module accepts input variables such as:
 
@@ -111,7 +111,7 @@ resource_group_name: Name of the Azure Resource Group.
 location: Azure region for resource deployment.
 vnet_address_space: Address space for the Virtual Network (VNet).
 
-#Output Variables
+# Output Variables
 
 After provisioning, obtain output variables such as:
 
@@ -125,7 +125,7 @@ Provisioning an AKS Cluster with Terraform
 
 This section demonstrates provisioning an Azure Kubernetes Service (AKS) cluster using Infrastructure as Code (IaC) with Terraform. It automates AKS cluster creation, integrates with previously provisioned networking resources, and configures necessary settings.
 
-##Prerequisites
+## Prerequisites
 
 Ensure the following tools are installed and configured:
 
@@ -133,29 +133,29 @@ Ensure the following tools are installed and configured:
 - Azure CLI
 
 
-#Project Structure
+# Project Structure
 
 The project is structured into modules:
 
 - networking-module: Handles Azure networking services.
 - aks-cluster-module: Manages AKS cluster provisioning.
 
-#Usage
+# Usage
 
-##Navigate to AKS Module:
+## Navigate to AKS Module:
 cd Web-App-DevOps-Project/aks-cluster-module
 
-##Initialize Terraform:
+## Initialize Terraform:
 
 terraform init
 
-##Review and Apply Terraform Configuration:
+## Review and Apply Terraform Configuration:
 
 terraform apply
 
 Proceed with provisioning the AKS cluster, providing necessary input variables.
 
-##Input Variables
+## Input Variables
 
 The AKS cluster module requires input variables such as:
 
@@ -176,13 +176,13 @@ After AKS cluster provisioning, retrieve output variables such as:
 - aks_cluster_name: Name of the AKS cluster.
 - aks_kubeconfig: Kubernetes configuration file for the AKS cluster.
 
-#Deployment to Azure Kubernetes Service (AKS)
+# Deployment to Azure Kubernetes Service (AKS)
 
 This section focuses on deploying your application to Azure Kubernetes Service (AKS) using Kubernetes manifests for both Deployment and Service.
 
-#Kubernetes Deployment Manifest
+# Kubernetes Deployment Manifest
 
-##The Kubernetes Deployment manifest (application-manifest.yaml) defines:
+## The Kubernetes Deployment manifest (application-manifest.yaml) defines:
 
 - Deployment Name: flask-app-deployment for managing the containerized application.
 - Replicas: Configured for two replicas to ensure scalability and high availability.
@@ -215,7 +215,7 @@ spec:
           maxUnavailable: 1
 Kubernetes Service Manifest
 
-#The Kubernetes Service manifest (application-manifest.yaml) defines:
+# The Kubernetes Service manifest (application-manifest.yaml) defines:
 
 Service Name: flask-app-service for accessing the application within the AKS cluster.
 Port Mapping: Exposes port 80 on the AKS cluster to port 5000 on the application containers.
@@ -235,7 +235,7 @@ spec:
   type: LoadBalancer
 
 
-#Deploying Kubernetes Manifests
+# Deploying Kubernetes Manifests
 
 ##Apply Deployment Manifest:
 kubectl apply -f application-manifest.yaml
@@ -247,24 +247,24 @@ Continuous Integration and Continuous Deployment (CI/CD) with Azure DevOps
 
 This section outlines setting up CI/CD pipelines using Azure DevOps to automate build, test, and deployment processes for your web application.
 
-#Azure DevOps Pipeline Setup
+# Azure DevOps Pipeline Setup
 
-##Create Project:
+## Create Project:
 Navigate to Azure DevOps and create a new project for your application.
 
-##Set Up Repositories:
+## Set Up Repositories:
 Connect Azure DevOps to your GitHub repository containing the application code.
 
-##Create Service Connections:
+## Create Service Connections:
 Configure service connections to Azure resources (Azure Subscription, AKS Cluster).
 
-##Build Pipeline:
+## Build Pipeline:
 Define build tasks to compile code, run tests, and build Docker images.
 
-##Release Pipeline:
+## Release Pipeline:
 Configure release stages to deploy application artifacts to AKS.
 
-#Build Pipeline Configuration
+# Build Pipeline Configuration
 
 Example azure-pipelines.yml for build pipeline:
 
@@ -303,7 +303,7 @@ Add Stage: Use Kubernetes deployment task to apply manifests.
 
 Approvals and Gates: Implement approval gates for deployment to production environments
 
-#Testing and Validation
+# Testing and Validation
 
 - Ensure thorough testing and validation of your application and infrastructure components:
 
@@ -317,10 +317,10 @@ Approvals and Gates: Implement approval gates for deployment to production envir
 
 - Security Testing: Assess application and infrastructure security measures.
 
-#Contributing
+# Contributing
 
 Contributions are welcome! Please fork the repository and create a pull request for any enhancements or bug fixes.
 
-#License
+# License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
