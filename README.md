@@ -71,7 +71,7 @@ python app.py
 
 This section details the provisioning of Azure networking services using Infrastructure as Code (IaC) with Terraform. The infrastructure setup includes creating an Azure Resource Group, a Virtual Network (VNet), subnets for the control plane and worker nodes, and a Network Security Group (NSG).
 
-# Prerequisites
+## Prerequisites
 
 Ensure you have the following tools installed and configured:
 
